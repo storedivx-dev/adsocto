@@ -18,12 +18,15 @@ export default function AboutPage() {
       />
       <section className="container-page grid items-center gap-10 pb-20 lg:grid-cols-2">
         <div className="relative flex items-center justify-center">
-          <div className="absolute inset-[10%] rounded-full bg-fuchsia-500/20 blur-3xl" />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-[12%] rounded-full bg-fuchsia-500/20 blur-3xl"
+          />
           <Image
             src="/hero-octopus.png"
             alt="AdsOcto octopus mascot"
-            width={1280}
-            height={720}
+            width={1536}
+            height={1024}
             className="hero-octopus relative z-10 h-auto w-full object-contain"
           />
         </div>

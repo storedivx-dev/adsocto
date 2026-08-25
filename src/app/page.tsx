@@ -44,18 +44,19 @@ export default function Home() {
               ))}
             </dl>
           </div>
-          <div className="relative flex items-center justify-center">
-            <div className="absolute inset-[12%] rounded-full bg-fuchsia-500/20 blur-3xl animate-pulse-soft" />
-            <div className="animate-float relative w-full">
-              <Image
-                src="/hero-octopus.png"
-                alt="Purple AdsOcto octopus wrapping holographic ad cards"
-                width={1280}
-                height={720}
-                priority
-                className="hero-octopus relative z-10 h-auto w-full object-contain drop-shadow-[0_20px_60px_rgba(168,85,247,0.35)]"
-              />
-            </div>
+          <div className="relative flex items-center justify-center lg:-mr-6">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-[18%] rounded-full bg-fuchsia-500/25 blur-3xl animate-pulse-soft"
+            />
+            <Image
+              src="/hero-octopus.png"
+              alt="AdsOcto octopus with holographic ad screens"
+              width={1536}
+              height={1024}
+              priority
+              className="hero-octopus relative z-10 h-auto w-full max-w-none object-contain drop-shadow-[0_30px_80px_rgba(124,58,237,0.45)] animate-float"
+            />
           </div>
         </div>
         <div className="border-y border-white/10 bg-black/20 py-4">

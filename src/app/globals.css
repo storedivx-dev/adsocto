@@ -139,8 +139,7 @@ body {
 }
 
 .hero-octopus {
-  /* black baked background disappears on the site bg */
-  mix-blend-mode: screen;
+  background: transparent;
 }
 
 input,
