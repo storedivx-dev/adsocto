@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Background } from "@/components/Background";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { getI18n } from "@/lib/i18n/get-locale";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -54,11 +53,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const { locale, dict } = await getI18n();
-
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang={locale} className="h-full antialiased">
+    <html lang="en" className="h-full antialiased">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -73,9 +70,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="flex min-h-full flex-col font-sans">
         <Background />
-        <Header locale={locale} dict={dict} />
+        <Header />
         <main className="flex flex-1 flex-col">{children}</main>
-        <Footer dict={dict} />
+        <Footer />
       </body>
     </html>
   );

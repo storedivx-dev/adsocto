@@ -1,17 +1,10 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Mode = "contact" | "login" | "signup";
 
-export function AccountForm({
-  mode,
-  contactDict,
-}: {
-  mode: Mode;
-  contactDict?: Dictionary["contact"];
-}) {
+export function AccountForm({ mode }: { mode: Mode }) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
@@ -52,13 +45,10 @@ export function AccountForm({
     }
   }
 
-  const c = contactDict;
-
   if (sent) {
     const message =
       mode === "contact"
-        ? c?.success ||
-          "Message received at info@adsocto.com. We will write back soon."
+        ? "Message received at info@adsocto.com. We will write back soon."
         : mode === "login"
           ? "This is the marketing front-end — the live dashboard login will connect here next."
           : "Account request captured. We will open self-serve access as the platform goes live.";
@@ -74,9 +64,7 @@ export function AccountForm({
     <form onSubmit={onSubmit} className="glass space-y-4 rounded-3xl p-6 sm:p-8">
       {mode !== "login" ? (
         <label className="block text-sm">
-          <span className="mb-1.5 block text-muted">
-            {c?.fullName || "Full name"}
-          </span>
+          <span className="mb-1.5 block text-muted">Full name</span>
           <input
             required
             name="name"
@@ -107,25 +95,21 @@ export function AccountForm({
       ) : null}
       {mode !== "login" ? (
         <label className="block text-sm">
-          <span className="mb-1.5 block text-muted">{c?.iAmA || "I am a"}</span>
+          <span className="mb-1.5 block text-muted">I am a</span>
           <select
             name="role"
             className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 outline-none ring-fuchsia-400/40 focus:ring-2"
             defaultValue="advertiser"
           >
-            <option value="advertiser">
-              {c?.roleAdv || "Advertiser / media buyer"}
-            </option>
-            <option value="publisher">{c?.rolePub || "Publisher"}</option>
-            <option value="agency">{c?.roleAgency || "Agency"}</option>
+            <option value="advertiser">Advertiser / media buyer</option>
+            <option value="publisher">Publisher</option>
+            <option value="agency">Agency</option>
           </select>
         </label>
       ) : null}
       {mode === "contact" ? (
         <label className="block text-sm">
-          <span className="mb-1.5 block text-muted">
-            {c?.message || "Message"}
-          </span>
+          <span className="mb-1.5 block text-muted">Message</span>
           <textarea
             required
             name="message"
@@ -142,8 +126,8 @@ export function AccountForm({
       >
         {mode === "contact"
           ? pending
-            ? c?.sending || "Sending…"
-            : c?.send || "Send message"
+            ? "Sending…"
+            : "Send message"
           : mode === "login"
             ? "Log in"
             : "Create account"}

@@ -4,8 +4,7 @@ import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { FormatShowcase } from "@/components/FormatShowcase";
 import { ButtonLink, SectionHeading } from "@/components/Ui";
-import { getI18n } from "@/lib/i18n/get-locale";
-import { geos, payments, targeting } from "@/lib/data";
+import { faqs, features, geos, payments, stats, targeting } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "AdsOcto — Ad Network for Popunder, Push & Native Ads",
@@ -62,41 +61,39 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Home() {
-  const { dict } = await getI18n();
-  const t = dict.home;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://adsocto.com/#organization",
+      name: "AdsOcto",
+      url: "https://adsocto.com",
+      logo: "https://adsocto.com/octopus-logo.png",
+      email: "info@adsocto.com",
+      description:
+        "High-performance advertising network for advertisers and publishers.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://adsocto.com/#website",
+      url: "https://adsocto.com",
+      name: "AdsOcto",
+      publisher: { "@id": "https://adsocto.com/#organization" },
+      inLanguage: "en",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    },
+  ],
+};
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://adsocto.com/#organization",
-        name: "AdsOcto",
-        url: "https://adsocto.com",
-        logo: "https://adsocto.com/octopus-logo.png",
-        email: "info@adsocto.com",
-        description:
-          "High-performance advertising network for advertisers and publishers.",
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://adsocto.com/#website",
-        url: "https://adsocto.com",
-        name: "AdsOcto",
-        publisher: { "@id": "https://adsocto.com/#organization" },
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: dict.faqs.map((item) => ({
-          "@type": "Question",
-          name: item.q,
-          acceptedAnswer: { "@type": "Answer", text: item.a },
-        })),
-      },
-    ],
-  };
-
+export default function Home() {
   return (
     <div>
       <script
@@ -108,22 +105,26 @@ export default async function Home() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-fuchsia-300/25 bg-fuchsia-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-fuchsia-200">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_#22d3ee]" />
-              {t.badge}
+              Network live · 190+ geos
             </div>
             <h1 className="mt-6 font-display text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-7xl">
-              {t.h1a}
+              Eight arms.
               <br />
-              <span className="gradient-text">{t.h1b}</span>
+              <span className="gradient-text">Infinite reach.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-muted">{t.lead}</p>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
+              AdsOcto is a colorful, high-performance ad network for media
+              buyers and publishers. Popunder, push, native, interstitials — one
+              octopus, every channel.
+            </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/advertisers">{t.buyTraffic}</ButtonLink>
+              <ButtonLink href="/advertisers">Buy traffic</ButtonLink>
               <ButtonLink href="/publishers" variant="ghost">
-                {t.startEarning}
+                Start earning
               </ButtonLink>
             </div>
             <dl className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {t.stats.map((stat) => (
+              {stats.map((stat) => (
                 <div key={stat.label} className="glass rounded-2xl px-4 py-4">
                   <dt className="text-[11px] uppercase tracking-wider text-muted">
                     {stat.label}
@@ -167,9 +168,9 @@ export default async function Home() {
 
       <section className="container-page py-20">
         <SectionHeading
-          eyebrow={t.whoEyebrow}
-          title={t.whoTitle}
-          body={t.whoBody}
+          eyebrow="Who it's for"
+          title="One network. Two growth engines."
+          body="Advertisers buy converting traffic. Publishers monetize every tentacle of inventory. Same console, same quality bar."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           <Link
@@ -177,12 +178,17 @@ export default async function Home() {
             className="glass group rounded-3xl p-8 transition hover:border-fuchsia-300/40"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
-              {dict.nav.advertisers}
+              Advertisers
             </p>
-            <h3 className="mt-3 font-display text-3xl font-bold">{t.advTitle}</h3>
-            <p className="mt-3 text-muted leading-7">{t.advBody}</p>
+            <h3 className="mt-3 font-display text-3xl font-bold">
+              Buy top traffic
+            </h3>
+            <p className="mt-3 text-muted leading-7">
+              20+ targeting switches, Smart CPM, and antifraud in front of every
+              click. Launch pop, push, native, and more in minutes.
+            </p>
             <span className="mt-6 inline-block text-sm font-semibold text-fuchsia-200 group-hover:underline">
-              {t.advCta}
+              Media buying →
             </span>
           </Link>
           <Link
@@ -190,12 +196,17 @@ export default async function Home() {
             className="glass group rounded-3xl p-8 transition hover:border-cyan-300/40"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fuchsia-300">
-              {dict.nav.publishers}
+              Publishers
             </p>
-            <h3 className="mt-3 font-display text-3xl font-bold">{t.pubTitle}</h3>
-            <p className="mt-3 text-muted leading-7">{t.pubBody}</p>
+            <h3 className="mt-3 font-display text-3xl font-bold">
+              Start earning
+            </h3>
+            <p className="mt-3 text-muted leading-7">
+              Highest-intent formats, one tag, daily payouts. Sites, blogs, and
+              social traffic all feed the same octopus.
+            </p>
             <span className="mt-6 inline-block text-sm font-semibold text-cyan-200 group-hover:underline">
-              {t.pubCta}
+              Monetization →
             </span>
           </Link>
         </div>
@@ -203,19 +214,22 @@ export default async function Home() {
 
       <section className="container-page py-10">
         <SectionHeading
-          eyebrow={t.formatsEyebrow}
-          title={t.formatsTitle}
-          body={t.formatsBody}
+          eyebrow="Formats"
+          title="Top-performing ad units"
+          body="Popunder, push, native, interstitials and more — eight arms under one AdsOcto mark."
         />
         <div className="mt-12">
-          <FormatShowcase exploreLabel={dict.common.exploreFormats} />
+          <FormatShowcase />
         </div>
       </section>
 
       <section className="container-page py-20">
-        <SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle} />
+        <SectionHeading
+          eyebrow="Why AdsOcto"
+          title="Performance tools with partner care"
+        />
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {dict.features.map((feature) => (
+          {features.map((feature) => (
             <article key={feature.title} className="glass rounded-3xl p-6">
               <h3 className="font-display text-xl font-bold">{feature.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted">{feature.body}</p>
@@ -227,12 +241,15 @@ export default async function Home() {
       <section className="container-page grid gap-10 py-10 lg:grid-cols-2">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fuchsia-300">
-            {t.targetingEyebrow}
+            Targeting
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
-            {t.targetingTitle}
+            Reach the audience that actually converts
           </h2>
-          <p className="mt-4 text-muted leading-7">{t.targetingBody}</p>
+          <p className="mt-4 text-muted leading-7">
+            Slice traffic the way performance teams work: geo, device, carrier,
+            quality score, and zone lists — then let Smart CPM finish the job.
+          </p>
           <ul className="mt-6 grid gap-2 sm:grid-cols-2">
             {targeting.map((item) => (
               <li key={item} className="text-sm text-foreground/90">
@@ -244,12 +261,15 @@ export default async function Home() {
         </div>
         <div className="glass rounded-3xl p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
-            {t.paymentsEyebrow}
+            Payments
           </p>
           <h3 className="mt-3 font-display text-2xl font-bold">
-            {t.paymentsTitle}
+            $20 minimum to launch
           </h3>
-          <p className="mt-3 text-sm leading-6 text-muted">{t.paymentsBody}</p>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            Fund campaigns or cash out publisher earnings with the rails this
+            industry actually uses.
+          </p>
           <div className="mt-6 flex flex-wrap gap-2">
             {payments.map((item) => (
               <span
@@ -264,9 +284,9 @@ export default async function Home() {
       </section>
 
       <section className="container-page py-20">
-        <SectionHeading eyebrow={t.faqEyebrow} title={t.faqTitle} />
+        <SectionHeading eyebrow="FAQ" title="Straight answers" />
         <div className="mx-auto mt-10 max-w-3xl">
-          <Faq items={dict.faqs} />
+          <Faq />
         </div>
       </section>
 
@@ -281,13 +301,16 @@ export default async function Home() {
           />
           <div className="relative">
             <h2 className="font-display text-3xl font-bold sm:text-5xl">
-              {t.ctaTitle}
+              Ready to grow with the octopus?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted">{t.ctaBody}</p>
+            <p className="mx-auto mt-4 max-w-xl text-muted">
+              Sign up, pick a side, and launch. Campaigns and placements take
+              minutes — partner care is always in the tank with you.
+            </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <ButtonLink href="/signup">{t.createAccount}</ButtonLink>
+              <ButtonLink href="/signup">Create account</ButtonLink>
               <ButtonLink href="/contact" variant="ghost">
-                {t.talkToUs}
+                Talk to us
               </ButtonLink>
             </div>
           </div>
