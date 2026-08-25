@@ -44,18 +44,19 @@ export default function Home() {
               ))}
             </dl>
           </div>
-          <div className="relative flex items-center justify-center lg:-mr-6">
+          <div className="relative flex items-center justify-center">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-[18%] rounded-full bg-fuchsia-500/25 blur-3xl animate-pulse-soft"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[55%] w-[55%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500/20 blur-3xl animate-pulse-soft"
             />
             <Image
-              src="/hero-octopus.png"
+              src="/hero-cutout.png"
               alt="AdsOcto octopus with holographic ad screens"
-              width={1536}
-              height={1024}
+              width={1400}
+              height={1000}
               priority
-              className="hero-octopus relative z-10 h-auto w-full max-w-none object-contain drop-shadow-[0_30px_80px_rgba(124,58,237,0.45)] animate-float"
+              unoptimized
+              className="hero-octopus relative z-10 h-auto w-full object-contain animate-float"
             />
           </div>
         </div>

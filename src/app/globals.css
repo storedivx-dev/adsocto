@@ -139,8 +139,7 @@ body {
 }
 
 .hero-octopus {
-  background: transparent;
-  /* if any dark pixels remain, blend them into the page bg */
+  background: transparent !important;
   mix-blend-mode: screen;
 }
 

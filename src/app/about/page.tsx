@@ -23,7 +23,7 @@ export default function AboutPage() {
             className="pointer-events-none absolute inset-[12%] rounded-full bg-fuchsia-500/20 blur-3xl"
           />
           <Image
-            src="/hero-octopus.png"
+            src="/hero-cutout.png"
             alt="AdsOcto octopus mascot"
             width={1536}
             height={1024}
