@@ -26,8 +26,8 @@ export default function PrivacyPage() {
         </p>
         <p>
           You can request access or deletion at{" "}
-          <a className="text-fuchsia-200" href="mailto:support@adsocto.com">
-            support@adsocto.com
+          <a className="text-fuchsia-200" href="mailto:info@adsocto.com">
+            info@adsocto.com
           </a>
           .
         </p>

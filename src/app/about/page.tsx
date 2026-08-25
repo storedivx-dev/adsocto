@@ -17,13 +17,14 @@ export default function AboutPage() {
         body="Octo comes from octopus: one brain, eight arms, total awareness of the water around it. That is how we treat demand and supply — connected, colorful, and hard to outmaneuver."
       />
       <section className="container-page grid items-center gap-10 pb-20 lg:grid-cols-2">
-        <div className="overflow-hidden rounded-[2rem] border border-white/10">
+        <div className="relative flex items-center justify-center">
+          <div className="absolute inset-[10%] rounded-full bg-fuchsia-500/20 blur-3xl" />
           <Image
             src="/hero-octopus.png"
             alt="AdsOcto octopus mascot"
             width={1280}
             height={720}
-            className="h-auto w-full object-cover"
+            className="hero-octopus relative z-10 h-auto w-full object-contain"
           />
         </div>
         <div className="space-y-5 text-muted leading-7">

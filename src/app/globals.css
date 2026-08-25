@@ -138,6 +138,11 @@ body {
   mix-blend-mode: lighten;
 }
 
+.hero-octopus {
+  /* black baked background disappears on the site bg */
+  mix-blend-mode: screen;
+}
+
 input,
 select,
 textarea {

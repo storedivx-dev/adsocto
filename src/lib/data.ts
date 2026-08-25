@@ -156,7 +156,7 @@ export const features = [
   },
   {
     title: "Global payouts",
-    body: "Wire, cards, Paxum, and USDT. Publishers get weekly settlements with a low minimum.",
+    body: "Wire, cards, Paxum, and USDT. Publishers get daily settlements with a $20 minimum.",
   },
 ];
 
@@ -167,11 +167,11 @@ export const faqs = [
   },
   {
     q: "What is the minimum deposit?",
-    a: "You can start from $50 depending on the payment method. We recommend at least $100 for a first test so targeting and creatives have room to learn.",
+    a: "Minimum deposit and withdrawal is $20. We recommend a bit more for a first campaign test so targeting and creatives have room to learn.",
   },
   {
     q: "How do publishers get paid?",
-    a: "Weekly payouts once you pass the $50 minimum. Rates follow eCPM, so better engagement and conversion quality raise what you earn.",
+    a: "Daily payouts once you pass the $20 minimum. Rates follow eCPM, so better engagement and conversion quality raise what you earn.",
   },
   {
     q: "Do I need a website to monetize?",

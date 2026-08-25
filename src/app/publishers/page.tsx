@@ -5,7 +5,7 @@ import { formats, payments } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Publishers",
   description:
-    "Monetize sites, blogs, and social traffic with AdsOcto. High-converting formats, weekly payouts, and a single tag.",
+    "Monetize sites, blogs, and social traffic with AdsOcto. High-converting formats, daily payouts, and a single tag.",
 };
 
 export default function PublishersPage() {
@@ -14,7 +14,7 @@ export default function PublishersPage() {
       <PageHero
         eyebrow="Publishers"
         title="Monetize every tentacle of your traffic."
-        body="Drop a tag, pick formats, and let demand fill the gaps. Popunders need no layout space. Social bar and native keep UX intact. Weekly payouts from $50."
+        body="Drop a tag, pick formats, and let demand fill the gaps. Popunders need no layout space. Social bar and native keep UX intact. Daily payouts from $20."
         actions={
           <>
             <ButtonLink href="/signup">Start earning</ButtonLink>
@@ -58,7 +58,7 @@ export default function PublishersPage() {
         <div className="glass mt-10 rounded-3xl p-8">
           <h3 className="font-display text-2xl font-bold">Payouts</h3>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-            Weekly settlements after the $50 threshold. Choose the rail that
+            Daily settlements after the $20 threshold. Choose the rail that
             matches your geo.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">

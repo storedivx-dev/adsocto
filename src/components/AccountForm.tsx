@@ -6,16 +6,49 @@ type Mode = "contact" | "login" | "signup";
 
 export function AccountForm({ mode }: { mode: Mode }) {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setError("");
+
+    if (mode !== "contact") {
+      setSent(true);
+      return;
+    }
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    setPending(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          role: formData.get("role"),
+          message: formData.get("message"),
+        }),
+      });
+      const json = (await res.json()) as { ok?: boolean; error?: string };
+      if (!res.ok || !json.ok) {
+        throw new Error(json.error || "Failed to send message.");
+      }
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to send message.");
+    } finally {
+      setPending(false);
+    }
   }
 
   if (sent) {
     const message =
       mode === "contact"
-        ? "Message received. An AdsOcto partner will write back within one business day."
+        ? "Message received at info@adsocto.com. We will write back soon."
         : mode === "login"
           ? "This is the marketing front-end — the live dashboard login will connect here next."
           : "Account request captured. We will open self-serve access as the platform goes live.";
@@ -85,12 +118,16 @@ export function AccountForm({ mode }: { mode: Mode }) {
           />
         </label>
       ) : null}
+      {error ? <p className="text-sm text-rose-300">{error}</p> : null}
       <button
         type="submit"
-        className="glow-btn w-full rounded-full py-3 text-sm font-semibold text-white"
+        disabled={pending}
+        className="glow-btn w-full rounded-full py-3 text-sm font-semibold text-white disabled:opacity-60"
       >
         {mode === "contact"
-          ? "Send message"
+          ? pending
+            ? "Sending…"
+            : "Send message"
           : mode === "login"
             ? "Log in"
             : "Create account"}

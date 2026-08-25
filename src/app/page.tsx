@@ -44,16 +44,16 @@ export default function Home() {
               ))}
             </dl>
           </div>
-          <div className="relative">
-            <div className="absolute inset-8 rounded-full bg-fuchsia-500/25 blur-3xl animate-pulse-soft" />
-            <div className="animate-float relative overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_30px_80px_rgba(88,28,135,0.55)]">
+          <div className="relative flex items-center justify-center">
+            <div className="absolute inset-[12%] rounded-full bg-fuchsia-500/20 blur-3xl animate-pulse-soft" />
+            <div className="animate-float relative w-full">
               <Image
                 src="/hero-octopus.png"
                 alt="Purple AdsOcto octopus wrapping holographic ad cards"
                 width={1280}
                 height={720}
                 priority
-                className="h-auto w-full object-cover"
+                className="hero-octopus relative z-10 h-auto w-full object-contain drop-shadow-[0_20px_60px_rgba(168,85,247,0.35)]"
               />
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function Home() {
               Start earning
             </h3>
             <p className="mt-3 text-muted leading-7">
-              Highest-intent formats, one tag, weekly payouts. Sites, blogs, and
+              Highest-intent formats, one tag, daily payouts. Sites, blogs, and
               social traffic all feed the same octopus.
             </p>
             <span className="mt-6 inline-block text-sm font-semibold text-cyan-200 group-hover:underline">
@@ -170,7 +170,7 @@ export default function Home() {
             Payments
           </p>
           <h3 className="mt-3 font-display text-2xl font-bold">
-            $50 minimum to launch
+            $20 minimum to launch
           </h3>
           <p className="mt-3 text-sm leading-6 text-muted">
             Fund campaigns or cash out publisher earnings with the rails this

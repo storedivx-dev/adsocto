@@ -21,15 +21,9 @@ export default function ContactPage() {
           <h2 className="font-display text-xl font-bold">Direct channels</h2>
           <ul className="mt-4 space-y-3 text-sm text-muted">
             <li>
-              Partners ·{" "}
-              <a className="text-fuchsia-200" href="mailto:partners@adsocto.com">
-                partners@adsocto.com
-              </a>
-            </li>
-            <li>
-              Support ·{" "}
-              <a className="text-fuchsia-200" href="mailto:support@adsocto.com">
-                support@adsocto.com
+              Email ·{" "}
+              <a className="text-fuchsia-200" href="mailto:info@adsocto.com">
+                info@adsocto.com
               </a>
             </li>
             <li>Hours · 24/7 partner care</li>

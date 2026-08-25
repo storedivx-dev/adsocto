@@ -12,7 +12,7 @@ const steps = [
   {
     n: "01",
     title: "Open an account",
-    body: "Verify email, pick advertiser, and fund from $50.",
+    body: "Verify email, pick advertiser, and fund from $20.",
   },
   {
     n: "02",
