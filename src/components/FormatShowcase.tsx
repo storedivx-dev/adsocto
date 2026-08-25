@@ -4,7 +4,11 @@ import { useState } from "react";
 import { formats } from "@/lib/data";
 import { ButtonLink } from "@/components/Ui";
 
-export function FormatShowcase() {
+export function FormatShowcase({
+  exploreLabel = "Explore all formats",
+}: {
+  exploreLabel?: string;
+}) {
   const [active, setActive] = useState(0);
   const format = formats[active];
 
@@ -44,7 +48,7 @@ export function FormatShowcase() {
           ))}
         </ul>
         <div className="mt-8">
-          <ButtonLink href="/formats">Explore all formats</ButtonLink>
+          <ButtonLink href="/formats">{exploreLabel}</ButtonLink>
         </div>
       </div>
     </div>

@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { faqs } from "@/lib/data";
 
-export function Faq({ items = faqs }: { items?: { q: string; a: string }[] }) {
+export function Faq({ items }: { items: { q: string; a: string }[] }) {
   const [open, setOpen] = useState(0);
 
   return (
