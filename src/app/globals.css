@@ -140,6 +140,8 @@ body {
 
 .hero-octopus {
   background: transparent;
+  /* if any dark pixels remain, blend them into the page bg */
+  mix-blend-mode: screen;
 }
 
 input,
