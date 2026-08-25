@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07040f;
+  --foreground: #f6f0ff;
+  --muted: #b7a4d4;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-violet: #c084fc;
+  --color-fuchsia: #e879f9;
+  --color-cyan: #22d3ee;
+  --color-ink: #07040f;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: #a855f7;
+  color: white;
+}
+
+.font-display {
+  font-family: "Syne", "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+.container-page {
+  width: min(1180px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, #f5d0fe 0%, #c084fc 35%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.03)
+  );
+  border: 1px solid rgba(232, 196, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 24px 80px rgba(88, 28, 135, 0.25);
+  backdrop-filter: blur(18px);
+}
+
+.glow-btn {
+  background: linear-gradient(135deg, #d946ef 0%, #7c3aed 50%, #06b6d4 140%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 10px 40px rgba(168, 85, 247, 0.45);
+}
+
+.glow-btn:hover {
+  filter: brightness(1.08);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 14px 48px rgba(34, 211, 238, 0.28);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes tentacle-sway {
+  0%,
+  100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+  50% {
+    transform: rotate(5deg) translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 7s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.logo-mark {
+  mix-blend-mode: lighten;
+}
+
+input,
+select,
+textarea {
+  color-scheme: dark;
+}
